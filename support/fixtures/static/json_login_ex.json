@@ -1,8 +1,4 @@
 {
-    "usuario_valido_nao_adm": {
-        "email": "jhony.bravo@gmail.com",
-        "password": "teste123"
-    },
     "usuario_valido_api": {
         "email": "fulano@qa.com",
         "password": "teste"
@@ -11,12 +7,12 @@
         "email": "emailinvalido@gmail.com",
         "password": "senhainvalida"
     },
-    "usuario_sem_senha": {
-        "email": "fulano@qa.com",
-        "password": ""
-    },
     "usuario_sem_email": {
         "email": "",
         "password": "teste"
+    },
+    "usuario_sem_senha": {
+        "email": "fulano@qa.com",
+        "password": ""
     }
 }

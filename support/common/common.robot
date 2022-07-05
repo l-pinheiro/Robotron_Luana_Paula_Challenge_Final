@@ -1,11 +1,8 @@
 * Settings *
 Documentation       Keywords e Variáveis para ações gerais
 Library             OperatingSystem
-
-
-* Variables *
-${id_invalido}          IdInvalido123
-${token_invalido}       tokeninvalido123
+Library             RequestsLibrary
+Library             Collections
 
 
 * Keywords *
@@ -14,7 +11,7 @@ Validar status code "${statuscode}"
 
 Importar JSON estatico
     [Arguments]             ${nome_arquivo}
-    ${arquivo}              Get File    ${EXECDIR}/${nome_arquivo}
+    ${arquivo}              Get File    ${EXECDIR}/support/fixtures/static/${nome_arquivo}
     ${data}                 Evaluate    json.loads('''${arquivo}''')        json
     [return]                ${data}
 
