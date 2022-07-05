@@ -1,0 +1,56 @@
+{
+    "produto_valido_api": {
+        "nome": "Logitech MX Vertical",
+        "preco": 470,
+        "descricao": "Mouse",
+        "quantidade": 381
+    },
+    "produto_valido1": {
+        "nome": "Teclado RGB",
+        "preco": 300,
+        "descricao": "Teclado",
+        "quantidade": 200
+    },
+    "produto_valido2": {
+        "nome": "Memoria RAM 4G",
+        "preco": 350,
+        "descricao": "Memoria",
+        "quantidade": 20
+    },
+    "produto_valido3": {
+        "nome": "Notebook Ideapad",
+        "preco": 2400,
+        "descricao": "Notebook",
+        "quantidade": 10
+    },
+    "produto_valido3_editado": {
+        "nome": "Notebook Ideapad",
+        "preco": 2900,
+        "descricao": "Notebook Editado",
+        "quantidade": 5
+    },
+    "produto_valido4": {
+        "nome": "Carregador Original",
+        "preco": 120,
+        "descricao": "Carregador",
+        "quantidade": 100
+    },
+    "produto_nome_igual": {
+        "nome": "Teclado RGB",
+        "preco": 400,
+        "descricao": "Teclado igual",
+        "quantidade": 150
+    },
+    "produto_valido5": {
+        "nome": "Fone de Ouvido Bluetooth",
+        "preco": 220,
+        "descricao": "Fone de Ouvido",
+        "quantidade": 80
+    },
+    "produto_valido6": {
+        "nome": "Headset RGB",
+        "preco": 380,
+        "descricao": "Headset",
+        "quantidade": 60
+    }
+}
