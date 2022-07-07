@@ -1,11 +1,6 @@
 * Settings *
 Documentation       Keywords e Variáveis para ações do endpoint de carrinhos
-# Library	            JSONLibrary
 Resource            ../support/base.robot
-
-
-* Variables *
-${quantidade}       1
 
 
 * Keywords *
@@ -21,14 +16,14 @@ GET endpoint /carrinhos especifico
     Set Global Variable     ${response}
 
 POST endpoint /carrinhos
-    [Arguments]             ${token_auth}=${response.json()["authorization"]}
+    [Arguments]             ${token_auth}=${response_login.json()["authorization"]}
     &{header}               Create Dictionary    Authorization=${token_auth}
     ${response}             POST On Session      serverest   /carrinhos    json=&{payload}     headers=${header}        expected_status=any
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
 
 DELETE endpoint /carrinhos
-    [Arguments]             ${tipo_compra}   ${token_auth}
+    [Arguments]             ${tipo_compra}   ${token_auth}=${response_login.json()["authorization"]}
     &{header}               Create Dictionary    Authorization=${token_auth}
     ${response}             DELETE On Session      serverest   /carrinhos/${tipo_compra}      headers=${header}        expected_status=any
     Log to Console          Response: ${response.content}
@@ -46,5 +41,5 @@ Criar ${tipo_carrinho} estatico
 
 Listar carrinhos e pegar um id valido
     GET endpoint /carrinhos
-    ${id_carrinho}          Set Variable    ${response.json()["carrinhos"][0]["_id"]}
+    ${id_carrinho}          Set Variable            ${response.json()["carrinhos"][0]["_id"]}
     Set Global Variable     ${id_carrinho}

@@ -21,3 +21,8 @@ Validar a mensagem "${mensagem}"
 Validar no campo a mensagem
     [Arguments]             ${campo}    ${mensagem}
     Should Be Equal         ${response.json()["${campo}"]}   ${mensagem}
+
+
+# Validar retorno do GET
+#     Log to Console          ${response.json()}
+#     Should Not Be Empty     ${response.json()}
