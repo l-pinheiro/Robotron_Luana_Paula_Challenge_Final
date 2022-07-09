@@ -1,5 +1,5 @@
 * Settings *
-Documentation       Keywords e Variáveis para ações do endpoint de carrinhos
+Documentation       Keywords para ações do endpoint de carrinhos
 Resource            ../support/base.robot
 
 
@@ -11,7 +11,7 @@ GET endpoint /carrinhos
 
 GET endpoint /carrinhos especifico
     [Arguments]             ${id_carrinho}=${id_carrinho}
-    ${response}             GET On Session      serverest   /carrinhos/${id_carrinho}
+    ${response}             GET On Session      serverest   /carrinhos/${id_carrinho}           expected_status=any
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
 

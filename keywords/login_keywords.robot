@@ -1,5 +1,5 @@
 * Settings *
-Documentation       Keywords e Variáveis para ações do endpoint de login
+Documentation       Keywords para ações do endpoint de login
 Library             library_teste.py
 Resource            ../support/base.robot
 
@@ -24,7 +24,10 @@ Criar usuario adm=${tipo_de_usuario} e guardar dados de login
     Criar dados dinamico usuario    adm=${tipo_de_usuario}
     POST endpoint /usuarios
     ${id_usuario}           Set Variable          ${response.json()["_id"]}
-    #Set Global Variable     ${id_usuario}
+    Set Global Variable     ${id_usuario}
     ${payload}              Pegar Dados Login Usuario      ${id_usuario}
-    #Log to Console          ${payload}
     Set Global Variable     ${payload}
+
+Validar status code de login "${statuscode}"
+    Should Be True          ${response_login.status_code} == ${statuscode}
+

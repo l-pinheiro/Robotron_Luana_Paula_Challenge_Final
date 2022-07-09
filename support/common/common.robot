@@ -1,5 +1,5 @@
 * Settings *
-Documentation       Keywords e Variáveis para ações gerais
+Documentation       Keywords para ações gerais
 Library             OperatingSystem
 Library             RequestsLibrary
 Library             Collections
@@ -18,10 +18,9 @@ Importar JSON estatico
 Validar a mensagem "${mensagem}"
     Should Be Equal         ${response.json()["message"]}   ${mensagem}
 
-Validar no campo a mensagem
-    [Arguments]             ${campo}    ${mensagem}
-    Should Be Equal         ${response.json()["${campo}"]}   ${mensagem}
-
+Validar a mensagem no campo
+    [Arguments]             ${mensagem}     ${campo}=message    ${nome_response}=response
+    Should Be Equal         ${${nome_response}.json()["${campo}"]}   ${mensagem}
 
 # Validar retorno do GET
 #     Log to Console          ${response.json()}

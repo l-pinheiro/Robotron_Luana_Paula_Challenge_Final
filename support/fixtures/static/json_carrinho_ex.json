@@ -14,10 +14,6 @@
     "carrinho_invalido":{  
       "produtos": [
         {
-          "idProduto": "BeeJh5lz3k6kSIzA",
-          "quantidade": 5
-        },
-        {
           "idProduto": "PRODUTO_INVALIDO",
           "quantidade": 10
         }

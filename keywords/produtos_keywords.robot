@@ -1,5 +1,5 @@
 * Settings *
-Documentation       Keywords e Variáveis para ações do endpoint de produtos
+Documentation       Keywords para ações do endpoint de produtos
 Resource            ../support/base.robot
 
 

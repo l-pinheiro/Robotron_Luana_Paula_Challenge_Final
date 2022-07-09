@@ -46,21 +46,21 @@ Cenario: POST Cadastrar Usuario Sem Nome 400
     Criar dados dinamico usuario    sem nome
     POST endpoint /usuarios
     Validar status code "400"
-    Validar no campo a mensagem     nome           nome é obrigatório
+    Validar a mensagem no campo     nome é obrigatório      nome
 
 Cenario: POST Cadastrar Usuario Sem Email 400
     [tags]     POST                 POST.USUARIO.SEM.EMAIL
     Criar dados dinamico usuario    sem email
     POST endpoint /usuarios
     Validar status code "400"
-    Validar no campo a mensagem     email          email é obrigatório
+    Validar a mensagem no campo     email é obrigatório     email
 
 Cenario: POST Cadastrar Usuario Sem Senha 400
     [tags]     POST                 POST.USUARIO.SEM.SENHA
     Criar dados dinamico usuario    sem senha
     POST endpoint /usuarios
     Validar status code "400"
-    Validar no campo a mensagem     password       password é obrigatório
+    Validar a mensagem no campo     password é obrigatório  password
 ### FIM Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
 
 #-------------Cenarios PUT endpoint /usuarios -------------------------------------------------------------------------------------#
