@@ -1,7 +1,5 @@
 * Settings *
 Documentation       Keywords para ações do endpoint de login
-Library             library_teste.py
-Resource            ../support/base.robot
 
 
 * Keywords *
@@ -9,11 +7,6 @@ POST endpoint /login
     ${response_login}       POST On Session     serverest   /login    json=&{payload}        expected_status=any
     Log to Console          Response: ${response_login.content}
     Set Global Variable     ${response_login}
-
-# Fazer login e armazenar token
-#     POST endpoint /login
-#     ${token_auth}           Set Variable    ${response.json()["authorization"]}
-#     Set Global Variable     ${token_auth}
 
 Criar ${tipo_de_usuario} estatico login
     ${json}                 Importar JSON estatico      json_login_ex.json

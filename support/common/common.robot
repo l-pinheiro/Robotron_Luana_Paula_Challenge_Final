@@ -1,11 +1,11 @@
 * Settings *
-Documentation       Keywords para ações gerais
-Library             OperatingSystem
-Library             RequestsLibrary
-Library             Collections
+Documentation       Keywords para ações gerais e comuns aos endpoints
 
 
 * Keywords *
+Criar Sessao
+    Create Session          serverest           ${Base_URI}
+
 Validar status code "${statuscode}"
     Should Be True          ${response.status_code} == ${statuscode}
 
@@ -22,6 +22,14 @@ Validar a mensagem no campo
     [Arguments]             ${mensagem}     ${campo}=message    ${nome_response}=response
     Should Be Equal         ${${nome_response}.json()["${campo}"]}   ${mensagem}
 
-# Validar retorno do GET
-#     Log to Console          ${response.json()}
-#     Should Not Be Empty     ${response.json()}
+Validar retorno no campo
+    [Arguments]       @{campos}     
+    @{campos}            Create List       @{campos}
+    FOR    ${campo}    IN    @{campos}
+        Should Not Be Empty          ${response.json()["${campo}"]}
+    END
+
+Alterar valor de um campo no dicionario    
+    [Arguments]            ${campo}    ${valor}    
+    Set to Dictionary      ${payload}    ${campo}=${valor}
+    Set Global Variable            &{payload}

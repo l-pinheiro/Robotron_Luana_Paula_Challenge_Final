@@ -23,15 +23,6 @@ Cenario: GET Carrinho ID Invalido 400
     Validar a Mensagem "Carrinho não encontrado"
 
 #-------------Cenarios POST endpoint /carrinhos -------------------------------------------------------------------------------------#
-# Cenario: POST Cadastrar Carrinho 200
-#     [tags]     POST                 POST.CARRINHO
-#     Criar usuario adm=true e guardar dados de login
-#     Fazer login e armazenar token
-#     Criar carrinho_valido estatico
-#     POST endpoint /carrinhos     ${token_auth}
-#     Validar status code "201"
-#     Validar a Mensagem "Cadastro realizado com sucesso"
-
 Cenario: POST Cadastrar Carrinho 200
     [tags]     POST                 POST.CARRINHO
     Criar usuario adm=true e guardar dados de login
@@ -89,16 +80,6 @@ Cenario: POST Cadastrar Carrinho Token Invalido 401
     Validar a Mensagem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 #-------------Cenarios DELETE endpoint /carrinhos -------------------------------------------------------------------------------------#
-# Cenario: DELETE Excluir Carrinho Concluir Compra Com Carrinho 200
-#     [tags]     DELETE               DELETE.COM.CARRINHO.CONCLUIR
-#     Criar usuario adm=true e guardar dados de login
-#     Fazer login e armazenar token
-#     Criar carrinho_valido estatico
-#     POST endpoint /carrinhos     ${token_auth}
-#     DELETE endpoint /carrinhos      concluir-compra    ${token_auth}
-#     Validar status code "200"
-#     Validar a Mensagem "Registro excluído com sucesso"
-
 Cenario: DELETE Excluir Carrinho Concluir Compra Com Carrinho 200
     [tags]     DELETE               DELETE.COM.CARRINHO.CONCLUIR
     Criar usuario adm=true e guardar dados de login
@@ -126,17 +107,6 @@ Cenario: DELETE Excluir Carrinho Concluir Compra Token Invalido 401
     DELETE endpoint /carrinhos      concluir-compra    ${token_invalido}
     Validar status code "401"
     Validar a Mensagem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
-
-# Cenario: DELETE Excluir Carrinho Cancelar Compra Com Carrinho 200
-#     [tags]     DELETE               DELETE.COM.CARRINHO.CANCELAR
-#     Criar usuario adm=true e guardar dados de login
-#     POST endpoint /login
-#     Criar carrinho_valido estatico
-#     POST endpoint /carrinhos
-#     DELETE endpoint /carrinhos      cancelar-compra
-#     Validar status code "200"
-#     Validar a Mensagem "Registro excluído com sucesso. Estoque dos produtos reabastecido"
-
 
 # Falha - documentação informa "Registro excluído com sucesso." mas o retorno é "Registro excluído com sucesso. Estoque dos produtos reabastecido"
 Cenario: DELETE Excluir Carrinho Cancelar Compra Com Carrinho 200

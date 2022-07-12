@@ -1,6 +1,5 @@
 * Settings *
 Documentation       Keywords para ações do endpoint de carrinhos
-Resource            ../support/base.robot
 
 
 * Keywords *

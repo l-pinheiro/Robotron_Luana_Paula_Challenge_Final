@@ -1,6 +1,5 @@
 * Settings *
 Documentation       Keywords para ações do endpoint de produtos
-Resource            ../support/base.robot
 
 
 * Keywords *
@@ -23,7 +22,7 @@ POST endpoint /produtos
     Set Global Variable     ${response}
 
 PUT endpoint /produtos
-    [Arguments]             ${id_produto}       ${token_auth}=${response_login.json()["authorization"]}
+    [Arguments]             ${id_produto}=${response.json()["_id"]}       ${token_auth}=${response_login.json()["authorization"]}
     &{header}               Create Dictionary    Authorization=${token_auth}
     ${response}             PUT On Session      serverest   /produtos/${id_produto}       headers=${header}     json=&{payload}     expected_status=any
     Log to Console          Response: ${response.content}
@@ -64,5 +63,4 @@ Verificar alteração na quantidade de um produto
     [Arguments]             ${quantidade_inicial}       ${quantidade_final}     @{diferença}
     ${diferença}            Create List       @{diferença}
     ${mensagem}             Verificar_Alteracao         ${quantidade_inicial}       ${quantidade_final}     ${diferença}
-    #Log to Console          ${mensagem}
     Should Not Contain      ${mensagem}             erro na quantidade do estoque
