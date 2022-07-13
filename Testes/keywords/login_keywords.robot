@@ -4,7 +4,7 @@ Documentation       Keywords para ações do endpoint de login
 
 * Keywords *
 POST endpoint /login
-    ${response_login}       POST On Session     serverest   /login    json=&{payload}        expected_status=any
+    ${response_login}       POST On Session     serverest       /login      json=&{payload}        expected_status=any
     Log to Console          Response: ${response_login.content}
     Set Global Variable     ${response_login}
 
@@ -16,7 +16,7 @@ Criar ${tipo_de_usuario} estatico login
 Criar usuario adm=${tipo_de_usuario} e guardar dados de login
     Criar dados dinamico usuario    adm=${tipo_de_usuario}
     POST endpoint /usuarios
-    ${id_usuario}           Set Variable          ${response.json()["_id"]}
+    ${id_usuario}           Set Variable       ${response.json()["_id"]}
     Set Global Variable     ${id_usuario}
     ${payload}              Pegar Dados Login Usuario      ${id_usuario}
     Set Global Variable     ${payload}

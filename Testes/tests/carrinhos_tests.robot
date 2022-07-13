@@ -31,7 +31,7 @@ Cenario: POST Cadastrar Carrinho 200
     Criar carrinho_valido estatico
     POST endpoint /carrinhos
     ${quant_final}     Pegar quantidade dos produtos em estoque
-    Verificar alteração na quantidade de um produto     ${quant_inicial}        ${quant_final}       -5       -10
+    Verificar alteração na quantidade de um produto     ${quant_inicial}       ${quant_final}       -5       -10
     Validar status code "201"
     Validar a Mensagem "Cadastro realizado com sucesso"
 
@@ -89,7 +89,7 @@ Cenario: DELETE Excluir Carrinho Concluir Compra Com Carrinho 200
     POST endpoint /carrinhos
     DELETE endpoint /carrinhos      concluir-compra
     ${quant_final}     Pegar quantidade dos produtos em estoque
-    Verificar alteração na quantidade de um produto     ${quant_inicial}   ${quant_final}       -5       -10
+    Verificar alteração na quantidade de um produto     ${quant_inicial}    ${quant_final}       -5       -10
     Validar status code "200"
     Validar a Mensagem "Registro excluído com sucesso"
 
@@ -118,7 +118,7 @@ Cenario: DELETE Excluir Carrinho Cancelar Compra Com Carrinho 200
     ${quant_inicial}   Pegar quantidade dos produtos em estoque
     DELETE endpoint /carrinhos      cancelar-compra
     ${quant_final}     Pegar quantidade dos produtos em estoque
-    Verificar alteração na quantidade de um produto     ${quant_inicial}   ${quant_final}       5       10
+    Verificar alteração na quantidade de um produto     ${quant_inicial}     ${quant_final}       5       10
     Validar status code "200"
     Validar a Mensagem "Registro excluído com sucesso."
 

@@ -8,7 +8,8 @@ def Pegar_Dados_Login_Usuario (id_usuario):
     response_json = r.json()
     payload = {'email': response_json["email"], 'password':  response_json["password"]}
     return payload
-        
+
+
 def Criar_usuario_dinamico (campo, adm):
     fake = Faker()
     if campo == "valido":
@@ -35,6 +36,7 @@ def Criar_usuario_dinamico (campo, adm):
         payload = {'nome': nome, 'email': email, 'password': senha}
     return payload
 
+
 def Pegar_Quantidades_Dos_Produtos (ids_produtos):
     quantidades = []
     for id in ids_produtos:
@@ -42,6 +44,7 @@ def Pegar_Quantidades_Dos_Produtos (ids_produtos):
         response_json = r.json()
         quantidades.append(response_json["quantidade"])
     return quantidades
+
 
 def Verificar_Alteracao (quantidade_inicial, quantidade_final, diferenca):
     mensagem = []

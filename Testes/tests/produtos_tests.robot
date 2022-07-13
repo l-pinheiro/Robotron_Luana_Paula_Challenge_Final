@@ -61,42 +61,42 @@ Cenario: POST Cadastrar Produto Usuario Não Administrador 403
     Validar a Mensagem "Rota exclusiva para administradores"
 
 ### Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
-Cenario: POST Cadastrar Produto Preco Negativo 201
+Cenario: POST Cadastrar Produto Preco Negativo 400
     [tags]     POST                 POST.PRODUTO.PRECO.NEGATIVO
     Criar usuario_valido_api estatico login
     POST endpoint /login
     Criar dados dinamico produto
-    Alterar valor de um campo no dicionario     preco      -${payload.preco}
+    Alterar valor de um campo no dicionario       preco      -${payload.preco}
     POST endpoint /produtos
     Validar status code "400"
     Validar a mensagem no campo  preco deve ser um número positivo    preco
 
-Cenario: POST Cadastrar Produto Preco Float 201
+Cenario: POST Cadastrar Produto Preco Float 400
     [tags]     POST                 POST.PRODUTO.PRECO.FLOAT
     Criar usuario_valido_api estatico login
     POST endpoint /login
     Criar dados dinamico produto
-    Alterar valor de um campo no dicionario     preco      29.90
+    Alterar valor de um campo no dicionario       preco       29.90
     POST endpoint /produtos
     Validar status code "400"
     Validar a mensagem no campo  preco deve ser um inteiro    preco
 
-Cenario: POST Cadastrar Produto Quantidade Negativa 201
+Cenario: POST Cadastrar Produto Quantidade Negativa 400
     [tags]     POST                 POST.PRODUTO.QUANTIDADE.NEGATIVA
     Criar usuario_valido_api estatico login
     POST endpoint /login
     Criar dados dinamico produto
-    Alterar valor de um campo no dicionario     quantidade      -${payload.quantidade}
+    Alterar valor de um campo no dicionario     quantidade     -${payload.quantidade}
     POST endpoint /produtos
     Validar status code "400"
     Validar a mensagem no campo  quantidade deve ser maior ou igual a 0    quantidade
 
-Cenario: POST Cadastrar Produto Quantidade Muito Alta 201
+Cenario: POST Cadastrar Produto Quantidade Muito Alta 400
     [tags]     POST                 POST.PRODUTO.QUANTIDADE.ALTA
     Criar usuario_valido_api estatico login
     POST endpoint /login
     Criar dados dinamico produto
-    Alterar valor de um campo no dicionario     quantidade      9007999999999999    #valor máximo é 9006999999999999
+    Alterar valor de um campo no dicionario     quantidade     9007999999999999    #valor máximo é 9006999999999999
     POST endpoint /produtos
     Validar status code "400"
     Validar a mensagem no campo  "quantidade" must be a safe number - Erro number.unsafe - Abra uma issue informando essa resposta. https://github.com/ServeRest/ServeRest/issues    quantidade
