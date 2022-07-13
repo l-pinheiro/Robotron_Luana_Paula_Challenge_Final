@@ -1,13 +1,15 @@
+# Arquivo de funções personalizadas em python para serem consumidas no Robot
+
 import requests as req
 from faker import Faker
-
 
 def Pegar_Dados_Login_Usuario (id_usuario):
     r = req.get("http://localhost:3000/usuarios/" + id_usuario)
     response_json = r.json()
     payload = {'email': response_json["email"], 'password':  response_json["password"]}
     return payload
-        
+
+
 def Criar_usuario_dinamico (campo, adm):
     fake = Faker()
     if campo == "valido":
@@ -27,7 +29,13 @@ def Criar_usuario_dinamico (campo, adm):
         nome = fake.name()
         email = fake.email()
         payload = {'nome': nome, 'email': email, 'administrador': adm}
+    elif campo == "sem adm":
+        nome = fake.name()
+        email = fake.email()
+        senha = fake.password()
+        payload = {'nome': nome, 'email': email, 'password': senha}
     return payload
+
 
 def Pegar_Quantidades_Dos_Produtos (ids_produtos):
     quantidades = []
@@ -36,6 +44,7 @@ def Pegar_Quantidades_Dos_Produtos (ids_produtos):
         response_json = r.json()
         quantidades.append(response_json["quantidade"])
     return quantidades
+
 
 def Verificar_Alteracao (quantidade_inicial, quantidade_final, diferenca):
     mensagem = []

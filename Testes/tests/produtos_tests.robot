@@ -16,6 +16,7 @@ Cenario: GET Produto Especifico 200
     Encontrar um id valido de produto
     GET endpoint /produtos especifico   ${id_produto}
     Validar status code "200"
+    Validar retorno no campo    nome
 
 Cenario: GET Produto Especifico ID Invalido 400
     [tags]     GET                  GET.PRODUTO.ID.INVALIDO
@@ -59,14 +60,68 @@ Cenario: POST Cadastrar Produto Usuario Não Administrador 403
     Validar status code "403"
     Validar a Mensagem "Rota exclusiva para administradores"
 
-#-------------Cenarios PUT endpoint /produtos -------------------------------------------------------------------------------------#
-Cenario: PUT Editar Produto 200
-    [tags]     PUT                  PUT.PRODUTO
+### Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
+Cenario: POST Cadastrar Produto Preco Negativo 400
+    [tags]     POST                 POST.PRODUTO.PRECO.NEGATIVO
     Criar usuario_valido_api estatico login
     POST endpoint /login
-    Encontrar um id valido de produto
     Criar dados dinamico produto
-    PUT endpoint /produtos          ${id_produto}
+    Alterar valor de um campo no dicionario       preco      -${payload.preco}
+    POST endpoint /produtos
+    Validar status code "400"
+    Validar a mensagem no campo  preco deve ser um número positivo    preco
+
+Cenario: POST Cadastrar Produto Preco Float 400
+    [tags]     POST                 POST.PRODUTO.PRECO.FLOAT
+    Criar usuario_valido_api estatico login
+    POST endpoint /login
+    Criar dados dinamico produto
+    Alterar valor de um campo no dicionario       preco       29.90
+    POST endpoint /produtos
+    Validar status code "400"
+    Validar a mensagem no campo  preco deve ser um inteiro    preco
+
+Cenario: POST Cadastrar Produto Quantidade Negativa 400
+    [tags]     POST                 POST.PRODUTO.QUANTIDADE.NEGATIVA
+    Criar usuario_valido_api estatico login
+    POST endpoint /login
+    Criar dados dinamico produto
+    Alterar valor de um campo no dicionario     quantidade     -${payload.quantidade}
+    POST endpoint /produtos
+    Validar status code "400"
+    Validar a mensagem no campo  quantidade deve ser maior ou igual a 0    quantidade
+
+Cenario: POST Cadastrar Produto Quantidade Muito Alta 400
+    [tags]     POST                 POST.PRODUTO.QUANTIDADE.ALTA
+    Criar usuario_valido_api estatico login
+    POST endpoint /login
+    Criar dados dinamico produto
+    Alterar valor de um campo no dicionario     quantidade     9007999999999999    #valor máximo é 9006999999999999
+    POST endpoint /produtos
+    Validar status code "400"
+    Validar a mensagem no campo  "quantidade" must be a safe number - Erro number.unsafe - Abra uma issue informando essa resposta. https://github.com/ServeRest/ServeRest/issues    quantidade
+### FIM Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
+
+#-------------Cenarios PUT endpoint /produtos -------------------------------------------------------------------------------------#
+Cenario: PUT Editar Produto 200
+    [tags]     PUT                  PUT.PRODUTO.TODOS
+    Criar usuario_valido_api estatico login
+    POST endpoint /login
+    Criar dados dinamico produto
+    POST endpoint /produtos
+    Criar dados dinamico produto        #Altera todos os campos de dados
+    PUT endpoint /produtos
+    Validar status code "200"
+    Validar a Mensagem "Registro alterado com sucesso"
+
+Cenario: PUT Editar Produto 200
+    [tags]     PUT                  PUT.PRODUTO.UM
+    Criar usuario_valido_api estatico login
+    POST endpoint /login
+    Criar dados dinamico produto
+    POST endpoint /produtos
+    Alterar valor de um campo no dicionario     descricao      Teclado Gamer   #Altera só o campo passado como argumento da keyword
+    PUT endpoint /produtos
     Validar status code "200"
     Validar a Mensagem "Registro alterado com sucesso"
 

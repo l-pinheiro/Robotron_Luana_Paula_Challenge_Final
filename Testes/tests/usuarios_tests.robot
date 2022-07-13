@@ -17,6 +17,7 @@ Cenario: GET Usuario Especifico 200
     POST endpoint /usuarios
     GET endpoint /usuarios especifico
     Validar status code "200"
+    Validar retorno no campo    nome    email    password
 
 Cenario: GET Usuario Especifico ID Invalido 400
     [tags]      GET                 GET.USUARIO.ID.INVALIDO
@@ -46,29 +47,45 @@ Cenario: POST Cadastrar Usuario Sem Nome 400
     Criar dados dinamico usuario    sem nome
     POST endpoint /usuarios
     Validar status code "400"
-    Validar a mensagem no campo     nome é obrigatório      nome
+    Validar a mensagem no campo     nome é obrigatório          nome
 
 Cenario: POST Cadastrar Usuario Sem Email 400
     [tags]     POST                 POST.USUARIO.SEM.EMAIL
     Criar dados dinamico usuario    sem email
     POST endpoint /usuarios
     Validar status code "400"
-    Validar a mensagem no campo     email é obrigatório     email
+    Validar a mensagem no campo     email é obrigatório         email
 
 Cenario: POST Cadastrar Usuario Sem Senha 400
     [tags]     POST                 POST.USUARIO.SEM.SENHA
     Criar dados dinamico usuario    sem senha
     POST endpoint /usuarios
     Validar status code "400"
-    Validar a mensagem no campo     password é obrigatório  password
+    Validar a mensagem no campo     password é obrigatório      password
+
+Cenario: POST Cadastrar Usuario Sem Administrador 400
+    [tags]     POST                 POST.USUARIO.SEM.ADM
+    Criar dados dinamico usuario    sem adm
+    POST endpoint /usuarios
+    Validar status code "400"
+    Validar a mensagem no campo     administrador é obrigatório      administrador
 ### FIM Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
 
 #-------------Cenarios PUT endpoint /usuarios -------------------------------------------------------------------------------------#
-Cenario: PUT Editar Usuario 200
-    [tags]     PUT                  PUT.USUARIO
+Cenario: PUT Editar Usuario Todos os Campos 200
+    [tags]     PUT                  PUT.USUARIO.TODOS
     Criar dados dinamico usuario    adm=true
     POST endpoint /usuarios
-    Criar dados dinamico usuario    adm=false
+    Criar dados dinamico usuario    adm=false           #Altera todos os campos de dados
+    PUT endpoint /usuarios
+    Validar status code "200"
+    Validar a Mensagem "Registro alterado com sucesso"
+
+Cenario: PUT Editar Usuario Só Um Campo 200
+    [tags]     PUT                  PUT.USUARIO.UM
+    Criar dados dinamico usuario    adm=true
+    POST endpoint /usuarios
+    Alterar valor de um campo no dicionario     nome      Luana Correa    #Altera só o campo passado como argumento da keyword
     PUT endpoint /usuarios
     Validar status code "200"
     Validar a Mensagem "Registro alterado com sucesso"

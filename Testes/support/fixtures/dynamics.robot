@@ -1,13 +1,10 @@
 * Settings *
-Documentation       Keywords e Variáveis para geração de dados dinamicos
-Library             FakerLibrary
-
+Documentation       Keywords para geração de dados dinamicos
 
 * Keywords *
 Criar dados dinamico usuario
     [Arguments]                    ${campo}=valido                  ${adm}=true
     ${payload}                     Criar usuario dinamico           ${campo}            ${adm}
-    Log to Console                 ${payload}
     Set Global Variable            ${payload}
 
 Criar dados dinamico produto

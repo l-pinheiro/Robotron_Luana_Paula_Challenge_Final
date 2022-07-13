@@ -19,7 +19,7 @@ Cenario: POST Realizar Login Invalido 400
     Criar usuario_invalido estatico login
     POST endpoint /login
     Validar status code de login "400"
-    Validar a mensagem no campo  Email e/ou senha inválidos    message     response_login
+    Validar a mensagem no campo  Email e/ou senha inválidos     message     response_login
 
 ### Cenarios Extras Que Podem Ocorrer (Fora da Documentação) ###
 Cenario: POST Realizar Login Sem Email 400
@@ -27,11 +27,11 @@ Cenario: POST Realizar Login Sem Email 400
     Criar usuario_sem_email estatico login
     POST endpoint /login
     Validar status code de login "400"
-    Validar a mensagem no campo  email não pode ficar em branco          email     response_login
+    Validar a mensagem no campo  email não pode ficar em branco       email        response_login
 
 Cenario: POST Realizar Login Sem Senha 400
     [tags]     POST                 POST.LOGIN.SEM.SENHA
     Criar usuario_sem_senha estatico login
     POST endpoint /login
     Validar status code de login "400"
-    Validar a mensagem no campo  password não pode ficar em branco       password     response_login
+    Validar a mensagem no campo  password não pode ficar em branco    password     response_login
